@@ -13,6 +13,7 @@
 // @grant        GM_addStyle
 // @connect      e-hentai.org
 // @connect      exhentai.org
+// @license      MIT
 // ==/UserScript==
 let panelBg = getComputedStyle(document.querySelector("div#gmid"), null)["background-color"];
 let borderColor = getComputedStyle(document.querySelector("input#newtagfield"), null)["border"].slice(10);
