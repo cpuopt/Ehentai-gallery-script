@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/cpuopt/Ehentai-gallery-script
 // @version      1.0.0
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
 // @include      https://e-hentai.org/g/*/*
-// @homepage     
-// @supportURL
-// @updateURL
-// @downloadURL
+// @homepage     https://github.com/cpuopt/Ehentai-gallery-script
+// @supportURL   https://raw.githubusercontent.com/cpuopt/Ehentai-gallery-script/main/ehentai_gallery_script.js
+// @updateURL    https://raw.githubusercontent.com/cpuopt/Ehentai-gallery-script/main/ehentai_gallery_script.js
+// @downloadURL  https://raw.githubusercontent.com/cpuopt/Ehentai-gallery-script/main/ehentai_gallery_script.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @connect      e-hentai.org
