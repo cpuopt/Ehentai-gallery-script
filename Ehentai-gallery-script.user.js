@@ -7,8 +7,8 @@
 // @include      https://exhentai.org/g/*/*
 // @include      https://e-hentai.org/g/*/*
 // @homepage     https://github.com/cpuopt/Ehentai-gallery-script
-// @updateURL    https://raw.githubusercontent.com/cpuopt/Ehentai-gallery-script/main/ehentai_gallery_script.user.js
-// @downloadURL  https://raw.githubusercontent.com/cpuopt/Ehentai-gallery-script/main/ehentai_gallery_script.user.js
+// @updateURL    https://github.com/cpuopt/Ehentai-gallery-script/raw/main/Ehentai-gallery-script.user.js
+// @downloadURL  https://github.com/cpuopt/Ehentai-gallery-script/raw/main/Ehentai-gallery-script.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @connect      e-hentai.org
