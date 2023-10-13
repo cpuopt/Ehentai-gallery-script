@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.2
+// @version      1.0.3
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
@@ -256,13 +256,6 @@ div#gd6 {
                         Efilename.style.textAlign = "left";
                         panel.appendChild(Efilename);
 
-                        let Edownload = document.createElement("input");
-                        Edownload.style = "margin-bottom: 2px;";
-                        Edownload.type = "button";
-                        Edownload.value = "下载Torrent";
-                        Edownload.setAttribute("onclick", download);
-                        panel.appendChild(Edownload);
-
                         let Etorrent = document.createElement("input");
                         Etorrent.style = "margin-bottom: 2px;";
                         Etorrent.type = "button";
@@ -277,6 +270,13 @@ div#gd6 {
                             document.body.removeChild(el);
                         };
                         panel.appendChild(Etorrent);
+
+                        let Edownload = document.createElement("input");
+                        Edownload.style = "margin-bottom: 2px;";
+                        Edownload.type = "button";
+                        Edownload.value = "下载Torrent";
+                        Edownload.setAttribute("onclick", download);
+                        panel.appendChild(Edownload);
                     }
                 },
             });
