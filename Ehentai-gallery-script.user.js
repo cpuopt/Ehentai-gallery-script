@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.1
+// @version      1.0.2
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
