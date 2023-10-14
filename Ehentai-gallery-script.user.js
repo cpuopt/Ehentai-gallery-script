@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.4
+// @version      1.0.5
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
@@ -80,13 +80,11 @@ div#gd6 {
 (function () {
     "use strict";
 
-    let param = document.URL.split("/")
-        .filter((item) => {
-            return item != "";
-        })
-        .reverse();
-    let param_gid = param[1];
-    let param_t = param[0];
+    let param = document.URL.split("/").filter((item) => {
+        return item != "";
+    });
+    let param_gid = param[3];
+    let param_t = param[4];
 
     let hostname = location.hostname;
     let favURL = `https://${hostname}/gallerypopups.php?gid=${param_gid}&t=${param_t}&act=addfav`;
