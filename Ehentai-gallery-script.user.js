@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.6
+// @version      1.0.7
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
@@ -11,12 +11,13 @@
 // @downloadURL  https://github.com/cpuopt/Ehentai-gallery-script/raw/main/Ehentai-gallery-script.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
+// @grant        GM_info
 // @connect      e-hentai.org
 // @connect      exhentai.org
 // @license      MIT
 // ==/UserScript==
 let panelBg = getComputedStyle(document.querySelector("div#gmid"), null)["background-color"];
-let borderColor = getComputedStyle(document.querySelector("input#newtagfield"), null)["border"].slice(10);
+let borderColor = getComputedStyle(document.querySelector("input#newtagfield"), null)["border"].match(/rgb\(.*?\)/)[0];
 let buttonColor = getComputedStyle(document.body, null)["color"];
 let lineColor = getComputedStyle(document.querySelector("div.gm"), null)["border"];
 
@@ -28,10 +29,10 @@ GM_addStyle(`
     top: 30%;
     float: right;
     z-index: 999;
+    border: 2px solid rgb(141, 141, 141);
     box-sizing: border-box;
-    padding: 0 5px 0 5px;
-    border-left: ${lineColor};
-    background-color: ${panelBg}
+    background-color: ${panelBg};
+    padding: 3px;
 }
 .plugin-button-blue {
     display: block;
@@ -64,7 +65,9 @@ GM_addStyle(`
     background-color: ${borderColor};
 }
 .torrent-panel{
+    padding: 3px;
     margin-bottom:5px;
+
 }
 div#gd6 {
     font-size: 9pt;
@@ -75,6 +78,11 @@ div#gd6 {
 }
 .Ebutton{
     margin-bottom:2px
+}
+#fav-panel{
+    padding: 3px 3px 0 3px;
+    border: 2px solid ${borderColor};
+    margin-bottom:3px;
 }
 `);
 (function () {
@@ -113,7 +121,10 @@ div#gd6 {
             this.canvas = document.createElement("div");
             this.canvasContainer = document.createElement("div");
             this.canvas.id = "plugin-canvas";
-
+            let title = document.createElement("p");
+            title.style = "margin:0 auto;text-align:center";
+            title.innerText = GM_info.script.name + GM_info.script.version;
+            this.canvas.appendChild(title);
             this.canvas.append(this.canvasContainer);
 
             this.favpanel = document.createElement("div");
@@ -151,8 +162,17 @@ div#gd6 {
                     let form = dom.getElementById("galpop");
                     dom.querySelector("#galpop > p").setAttribute("hidden", "true");
                     dom.querySelector("#galpop > div > div.nosel").style.float = "none";
+                    dom.querySelector("textarea[name='favnote']").style.minHeight = "20px";
                     dom.querySelector("textarea[name='favnote']").style.height = "30px";
-                    dom.querySelector("#galpop > div > div:nth-child(2)").style.float = "none";
+                    dom.querySelector("textarea[name='favnote']").style.width = "97%";
+                    dom.querySelector("textarea[name='favnote']").style.maxWidth = "97%";
+
+                    const favNote = dom.querySelector("#galpop > div > div:nth-child(2)");
+                    favNote.style.marginTop = "5px";
+                    favNote.style.width = "auto";
+                    favNote.style.float = "none";
+                    favNote.style.border = `2px solid ${borderColor}`;
+                    favNote.style.padding = `3px`;
                     dom.querySelector("#galpop > div > div:nth-child(2) > div").style.margin = "0";
                     dom.querySelector("#galpop > div > div:nth-child(2) > div").innerHTML = dom.querySelector("#galpop > div > div:nth-child(2) > div").innerHTML.replace("[", "").replace("]", "");
                     dom.querySelector("#galpop > div > div:nth-child(2) > div > br").setAttribute("hidden", "true");
