@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.5
+// @version      1.0.6
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
@@ -151,8 +151,12 @@ div#gd6 {
                     let form = dom.getElementById("galpop");
                     dom.querySelector("#galpop > p").setAttribute("hidden", "true");
                     dom.querySelector("#galpop > div > div.nosel").style.float = "none";
-
-                    dom.querySelector("#galpop > div > div:nth-child(2)").setAttribute("hidden", "true");
+                    dom.querySelector("textarea[name='favnote']").style.height = "30px";
+                    dom.querySelector("#galpop > div > div:nth-child(2)").style.float = "none";
+                    dom.querySelector("#galpop > div > div:nth-child(2) > div").style.margin = "0";
+                    dom.querySelector("#galpop > div > div:nth-child(2) > div").innerHTML = dom.querySelector("#galpop > div > div:nth-child(2) > div").innerHTML.replace("[", "").replace("]", "");
+                    dom.querySelector("#galpop > div > div:nth-child(2) > div > br").setAttribute("hidden", "true");
+                    dom.querySelector("#galpop > div > div:nth-child(2) > div > a").setAttribute("hidden", "true");
                     form.setAttribute("action", favURL + param_gid + "&t=" + param_t + "&act=" + "addfav");
                     form.setAttribute("target", "hideif");
                     plugincanvas.appendChild(form);
