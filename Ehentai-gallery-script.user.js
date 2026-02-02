@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ehentai画廊收藏助手
 // @namespace    https://github.com/cpuopt/Ehentai-gallery-script
-// @version      1.0.7
+// @version      1.0.8
 // @description  e-hentai和exhentai画廊页面直接管理收藏和种子下载
 // @author       cpufan
 // @include      https://exhentai.org/g/*/*
@@ -234,7 +234,14 @@ div#gd6 {
                                 .querySelector("a")
                                 .href.match(/[\w\d]{40}/)
                                 .toString();
+                        /**
+                         * 私有种子
+                         */
                         let download = table[i].querySelector("a").getAttribute("onclick");
+
+                        /**
+                         * 可再分发种子
+                         */
                         let download_href = table[i].querySelector("a").getAttribute("href");
 
                         let panel = document.createElement("div");
@@ -295,19 +302,35 @@ div#gd6 {
                         };
                         panel.appendChild(Etorrent);
 
-                        let Edownload = document.createElement("input");
-                        Edownload.style = "margin-bottom: 2px;";
-                        Edownload.type = "button";
-                        Edownload.value = "下载Torrent";
-                        Edownload.setAttribute("onclick", download);
-                        panel.appendChild(Edownload);
+
+
+                        let Linkdownload = document.createElement("input");
+                        Linkdownload.type = "button";
+                        Linkdownload.value = "跳转磁力链";
+                        Linkdownload.style.marginBottom = "2px";
+
+                        Linkdownload.addEventListener("click", () => {
+                            const magnet = torrent;
+                            const a = document.createElement("a");
+                            a.href = magnet;
+                            a.click();
+                        });
+
+                        panel.appendChild(Linkdownload);
 
                         let Gdownload = document.createElement("input");
                         Gdownload.style = "margin-bottom: 2px;";
                         Gdownload.type = "button";
-                        Gdownload.value = "下载公共Torrent";
+                        Gdownload.value = "下载种子";
                         Gdownload.setAttribute("onclick", `document.location='${download_href}'; return false`);
                         panel.appendChild(Gdownload);
+
+                        let Edownload = document.createElement("input");
+                        Edownload.style = "margin-bottom: 2px;";
+                        Edownload.type = "button";
+                        Edownload.value = "下载私有种子";
+                        Edownload.setAttribute("onclick", download);
+                        panel.appendChild(Edownload);
                     }
                 },
             });
